@@ -1,18 +1,9 @@
-
 ---
-
 # vars file for apache
 
-  
-
 nom_sites:
-
  - app-salaire.ben.form
-
-  
-
+ 
 etat_repos:
-
  - availaible
-
  - enabled
