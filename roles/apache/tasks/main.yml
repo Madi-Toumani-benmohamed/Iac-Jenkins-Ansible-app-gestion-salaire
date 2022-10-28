@@ -33,14 +33,14 @@
      src: conf.j2
      dest: /etc/httpd/conf.d/{{ item }}.conf
     loop:
-     "{{ sites }}"
+     "{{ nom_sites }}"
 
   - name: Copier les fichiers php
     copy:
      src: php/
      dest: /var/www/{{ item }}/html/
     loop:
-     "{{ sites }}"
+     "{{ nom_sites }}"
 
     notify:
      - reboot httpd
