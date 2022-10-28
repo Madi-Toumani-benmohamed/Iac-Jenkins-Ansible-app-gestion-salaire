@@ -1,28 +1,33 @@
 ---
 #lol
-# tasks file for apache
-tasks:
+
+
+
+
+---
 - name: Installation de Apache
-  dnf:
-   name: httpd
-   state: present
-     
+  dnf:
+   name: httpd
+   state: present
+
 - name: Activation de Apache
-  systemd:
-   name: httpd
-   state: started
-   enabled: yes
-  
-- name: Creation rep /var/www/{{ nom_site }}/html
-  file:
-   path: /var/www/{{ nom_site }}/html
-   state: directory
-   mode: '0755'
-   owner: root
-   group: root
-   recurse: yes
-  loop:
-   "{{ nom_sites }}"
+  systemd:
+   name: httpd
+   state: started
+   enabled: yes
+
+- name: Création des répertoires des sites
+  file: 
+   path: /var/www/{{ item }}/html
+   state: directory
+   mode: '0755'
+   owner: root
+   group: root
+   recurse: yes
+  loop:
+   "{{ nom_sites }}"
+# tasks file for apache
+
   
 - name: Creation des fichiers index.html a partir de template
   template:
