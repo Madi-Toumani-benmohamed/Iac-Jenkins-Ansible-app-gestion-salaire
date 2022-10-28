@@ -1,5 +1,5 @@
 ---
-packet_php:
+php_packages:
  - php
  - php-fpm
  - php-pear
