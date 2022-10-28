@@ -1,10 +1,5 @@
 ---
-#lol
-
-
-
-
----
+# tasks file for apache
 - name: Installation de Apache
   dnf:
    name: httpd
@@ -26,9 +21,7 @@
    recurse: yes
   loop:
    "{{ nom_sites }}"
-# tasks file for apache
 
-  
 - name: Creation des fichiers index.html a partir de template
   template:
    src: index.j2
