@@ -2,6 +2,6 @@
     ServerName www.{{ item }}
     ServerAlias {{ item }}
     DocumentRoot /var/www/{{ item }}/html
-    ErrorLog /var/www/{{ item }}/log/error.log
-    CustomLog /var/www/{{ item }}/log/requests.log combined
+    ErrorLog /var/log/httpd/error_log
+    CustomLog /var/log/httpd/access_log combined
 </VirtualHost>

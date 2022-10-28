@@ -1,9 +1,2 @@
 ---
-
 # handlers file for php
-
-- name: "reboot apache"
-  systemd:
-   name: httpd
-   state: restarted
-   enabled: yes

@@ -1,12 +1,14 @@
 ---
-
-# tasks file for php
-
-
-- name: installation de php
-
-  dnf:
-   name: php
-   state: present
-  notify:
-    - reboot httpd
+- name: Installation de php
+  dnf:
+   name: "{{ item }}"
+   state: present
+  loop:
+   - php
+   - php-fpm
+   - php-pear
+   - php-mbstring
+- name: Restart Apache
+  systemd:
+   name: httpd
+   state: restarted

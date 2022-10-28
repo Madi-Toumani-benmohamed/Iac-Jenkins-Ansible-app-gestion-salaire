@@ -1,13 +1,2 @@
 ---
-
 # handlers file for mariadb
-
-- name: "reboot mariadb"
-
-  systemd:
-
-   name: mariadb
-
-   state: restarted
-
-   enabled: yes

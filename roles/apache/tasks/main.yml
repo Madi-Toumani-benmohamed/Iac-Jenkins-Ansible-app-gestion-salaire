@@ -19,25 +19,28 @@
      group: root
      recurse: yes
     loop:
-     "{{ nom_sites }}"
+     "{{ sites }}"
 
   - name: Création des fichiers index.html a partir de modèles
     template:
      src: index.j2
      dest: /var/www/{{ item }}/html/index.html
     loop:
-     "{{ nom_sites }}"
+     "{{ sites }}"
 
   - name: Création du template de fichier de conf
     template:
      src: conf.j2
      dest: /etc/httpd/conf.d/{{ item }}.conf
     loop:
-     "{{ nom_sites }}"
+     "{{ sites }}"
 
   - name: Copier les fichiers php
     copy:
      src: php/
      dest: /var/www/{{ item }}/html/
     loop:
-     "{{ nom_sites }}"
+     "{{ sites }}"
+
+    notify:
+     - restarthttpd

@@ -1,9 +1,6 @@
 ---
-# vars file for apache
+sites:
+ - app-salaire.clement.form
+ - app-salaire.client.form
+ - app-salaire.test.form
 
-nom_sites:
- - app-salaire.ben.form
- 
-etat_repos:
- - availaible
- - enabled

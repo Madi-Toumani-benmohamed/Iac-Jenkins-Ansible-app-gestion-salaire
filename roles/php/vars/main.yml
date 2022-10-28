@@ -1,7 +1,5 @@
 ---
-# vars file for php
-
-php_packets:
+packet_php:
  - php
  - php-fpm
  - php-pear
