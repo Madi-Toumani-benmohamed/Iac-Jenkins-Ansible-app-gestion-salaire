@@ -1,6 +1,5 @@
 ---
-- hosts: 10.0.0.54
-  
+- hosts: [web]
   roles:
     - roles/apache
     - roles/php
