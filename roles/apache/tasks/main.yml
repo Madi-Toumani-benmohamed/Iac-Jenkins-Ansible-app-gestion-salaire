@@ -40,6 +40,8 @@
     
   - name:
     shell: echo {{ item }} $mon_ip >> /etc/hosts
+    loop:
+     "{{ nom_sites }}"
     
   - name: Copier les fichiers php
     copy:
