@@ -1,5 +1,5 @@
 ---
-- name: "restarthttpd"
+- name: "reboot httpd"
   systemd:
    name: httpd
    state: restarted
