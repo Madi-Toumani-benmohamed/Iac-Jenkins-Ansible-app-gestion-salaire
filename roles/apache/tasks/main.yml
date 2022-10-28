@@ -10,7 +10,7 @@
      state: started
      enabled: yes
 
-  - name: Création des répertoires des sites
+  - name: Creation des dossiers pour les sites
     file: 
      path: /var/www/{{ item }}/html/
      state: directory
@@ -19,16 +19,16 @@
      group: root
      recurse: yes
     loop:
-     "{{ sites }}"
+     "{{ nom_sites }}"
 
-  - name: Création des fichiers index.html a partir de modèles
+  - name: Creation des fichiers index.html a partir du template
     template:
      src: index.j2
      dest: /var/www/{{ item }}/html/index.html
     loop:
-     "{{ sites }}"
+     "{{ nom_sites }}"
 
-  - name: Création du template de fichier de conf
+  - name: Creation du template de fichier de conf
     template:
      src: conf.j2
      dest: /etc/httpd/conf.d/{{ item }}.conf
@@ -43,4 +43,4 @@
      "{{ sites }}"
 
     notify:
-     - restarthttpd
+     - reboot httpd
