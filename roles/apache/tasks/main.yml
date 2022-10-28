@@ -1,60 +1,43 @@
 ---
-# tasks file for apache
-- name: Installation de Apache
-  dnf:
-   name: httpd
-   state: present
+  - name: Installation de Apache
+    dnf:
+     name: httpd
+     state: present
 
-- name: Activation de Apache
-  systemd:
-   name: httpd
-   state: started
-   enabled: yes
+  - name: Activation de Apache
+    systemd:
+     name: httpd
+     state: started
+     enabled: yes
 
-- name: Création des répertoires des sites
-  file: 
-   path: /var/www/{{ item }}/html
-   state: directory
-   mode: '0755'
-   owner: root
-   group: root
-   recurse: yes
-  loop:
-   "{{ nom_sites }}"
+  - name: Création des répertoires des sites
+    file: 
+     path: /var/www/{{ item }}
+     state: directory
+     mode: '0755'
+     owner: root
+     group: root
+     recurse: yes
+    loop:
+     "{{ nom_sites }}"
 
-- name: Creation des fichiers index.html a partir de template
-  template:
-   src: index.j2
-   dest: /var/www/{{ nom_site }}/html/index.html
-  loop:
-    "{{ nom_sites }}"
-  
-- name: Creation des repos sites web
-  file:
-   path: /etc/httpd/sites-{{ item }}
-   state: directory
-  loop:
-    "{{ etat_repos }}"
- 
-- name: Modification de httpd.conf
-  lineinfile:
-   path: /etc/httpd/httpd.conf
-   insertbefore: '^IncludeOptional conf.d/*.conf'
-   line: 'IncludeOptional sites-enabled/*.conf'
+  - name: Création des fichiers index.html a partir de modèles
+    template:
+     src: index.j2
+     dest: /var/www/{{ item }}/html/index.html
+    loop:
+     "{{ nom_sites }}"
 
-- name: Creation du template de fichier de conf
-  template:
-   src:  conf.j2
-   dest: /etc/httpd/sites-available/{{ item }}.conf
-  loop:
-   "{{ nom_sites }}"
+  - name: Création du template de fichier de conf
+    template:
+     src: conf.j2
+     dest: /etc/httpd/conf.d/{{ item }}.conf
+    loop:
+     "{{ nom_sites }}"
 
-- name: Creation du link
-  file:
-   src: /etc/httpd/sites-available/{{ nom_site }}.conf
-   dest: /etc/httpd/sites-enabled/{{ nom_site }}.conf
-   state: link
-  loop:
-    "{{ nom_sites }}"
-  notify:
-   - reboot httpd
+  - name: Copier les fichiers php
+    copy:
+     src: php/
+     dest: /var/www/{{ item }}/html/
+    loop:
+     "{{ nom_sites }}"
