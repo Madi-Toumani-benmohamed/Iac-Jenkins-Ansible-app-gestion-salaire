@@ -4,10 +4,7 @@
    name: "{{ item }}"
    state: present
   loop:
-   - php
-   - php-fpm
-   - php-pear
-   - php-mbstring
+   "{{ php_packages }}"
 - name: Restart Apache
   systemd:
    name: httpd
