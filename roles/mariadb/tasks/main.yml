@@ -1,13 +1,11 @@
 ---
-  - name: installation Mariadb
+  - name: installation Mariadb et package
     dnf:
      name: "{{ item }}"
      state: present
     loop:
-     - mariadb
-     - python3-PyMySQL
-     - mariadb-server
-  - name:  Activation Mariadb
+     "{{ mariad_packages }}"
+  - name:  Activation de Mariadb
     systemd:
      name: mariadb
      state: started
