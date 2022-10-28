@@ -1,0 +1,43 @@
+---
+
+# tasks file for mariadb
+
+  
+
+- name: install mariadb
+
+  yum:
+
+   name: " {{ item }} "
+
+   state: present
+
+  loop:
+
+   - mariadb-server
+
+   - python2-PyMySQL.noarch
+
+  notify:
+
+   - reboot mariadb
+
+- name: ajout .my.cnf conf mariadb
+
+  copy:
+
+   src: .my.cnf
+
+   dest: /root/.my.cnf
+
+- name: Ajout du user mariadb 'root' avec  password 'root'  et tout privileges
+
+  mysql_user:
+
+   name: root
+
+   password: root
+
+   priv: '*.*:ALL'
+
+   state: present

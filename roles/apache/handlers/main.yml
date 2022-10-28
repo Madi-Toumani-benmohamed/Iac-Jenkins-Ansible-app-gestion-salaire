@@ -1,0 +1,15 @@
+---
+
+# handlers file for apache
+
+  
+
+- name: "reboot apache2"
+
+  systemd:
+
+   name: httpd
+
+   state: restarted
+
+   enabled: yes

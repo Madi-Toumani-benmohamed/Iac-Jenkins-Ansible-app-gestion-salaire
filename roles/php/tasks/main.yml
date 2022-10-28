@@ -1,0 +1,12 @@
+---
+
+# tasks file for php
+
+
+- name: installation de php
+
+  dnf:
+   name: php
+   state: present
+  notify:
+    - reboot httpd
