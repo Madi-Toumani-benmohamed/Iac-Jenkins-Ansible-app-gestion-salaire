@@ -12,7 +12,7 @@
 
   - name: Création des répertoires des sites
     file: 
-     path: /var/www/{{ item }}
+     path: /var/www/{{ item }}/html/
      state: directory
      mode: '0755'
      owner: root
