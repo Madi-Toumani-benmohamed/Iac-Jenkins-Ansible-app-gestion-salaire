@@ -1,5 +1,5 @@
 ---
-  - name: installation Mariadb et package
+  - name: installation Mariadb et packages
     dnf:
      name: "{{ item }}"
      state: present
