@@ -1,2 +1,7 @@
 ---
 # vars file for mariadb
+
+mariad_packages:
+ - mariadb
+ - python3-PyMySQL
+ - mariadb-server
