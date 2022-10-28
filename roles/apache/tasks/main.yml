@@ -34,13 +34,18 @@
      dest: /etc/httpd/conf.d/{{ item }}.conf
     loop:
      "{{ nom_sites }}"
-
+     
+  - name:
+    shell: mon_ip=$(hostname -I)
+    
+  - name:
+    shell: echo {{ item }} $mon_ip >> /etc/hosts
+    
   - name: Copier les fichiers php
     copy:
      src: php/
      dest: /var/www/{{ item }}/html/
     loop:
-     "{{ nom_sites }}"
-
+     "{{ nom_sites }}"   
     notify:
      - reboot httpd
