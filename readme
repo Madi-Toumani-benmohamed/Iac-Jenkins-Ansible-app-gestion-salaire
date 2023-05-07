@@ -1,0 +1,7 @@
+Ce projet s'utilise en complément du projet Terraform également présent sur mon github.
+Le projet Terraform est un module Terraform que j'utilise afin de créer une machine virtuelle.
+
+Le but du projet app-salaire est d'utilisé Terraform, ansible ainsi que Microsoft Azure.
+
+Vous aurez besoin des logiciel terraform, ansible et azure-cli afin de faire fonctionner le projet.
+Et également d'un abonnement azure valide.
