@@ -1,7 +1,5 @@
 # Déploiement d'une Application de Gestion de Salaire avec Ansible et Jenkins
 
-Déploiement d'une Application de Gestion de Salaire via Jenkins et Ansible
-
 Ce projet utilise Jenkins et Ansible pour automatiser le déploiement d'une application de gestion de salaire. Le déploiement est orchestré à l'aide d'un Jenkinsfile pour piloter le processus CI/CD, tandis qu'Ansible gère la configuration des serveurs et l'installation de l'application.
 Structure du Projet
 
